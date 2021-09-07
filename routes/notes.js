@@ -60,4 +60,4 @@ note.delete("/:id", (req, res) => {
       });
 });
 
-  module.exports = fb;
+  module.exports = note;
