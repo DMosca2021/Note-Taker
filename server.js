@@ -1,7 +1,8 @@
 const express = require("express");
 const path = require("path");
-const fs = require("fs")
-const uuid = require("./helpers/uuid")
+const fs = require("fs");
+const uuid = require("./helpers/uuid");
+const api = require('./routes/index.js');
 
 const PORT = process.env.port || 3001;
 
@@ -11,6 +12,7 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
+app.use('/api', api);
 
 // GET Route for homepage
 app.get('/', (req, res) =>
@@ -81,7 +83,7 @@ app.post("/api/notes", (req, res) => {
 // DELETE Route for deleting note
 app.delete("/api/notes/:id", (req, res) => {
     const deleteNote = req.params.id;
-    console.log(`Deleting note: ${deleteNote}`);
+    console.log(`Deleting note: ${deleteNote}🗑️`);
     fs.readFile("./db/db.json", "utf8", (err, data) => {
         if(err) {
             console.error(err);
