@@ -1,20 +1,16 @@
 const note = require("express").Router();
 const uuid = require("../helpers/uuid");
-const {
-    readFromFile,
-    readAndAppend,
-    writeToFile,
-  } = require('../helpers/fsUtils');
+const { readFromFile, readAndAppend, writeToFile,} = require('../helpers/fsUtils');
 
 // GET Route for all notes
-note.get("/notes", (req, res) => 
-    readFromFile("./db/db.json").then((data) => res.json(JSON.parse(data)))
+note.get("/api/notes", (req, res) => 
+    readFromFile("../db/db.json").then((data) => res.json(JSON.parse(data)))
 );
 
 // GET Route for a specific note
-note.get('/:id', (req, res) => {
+note.get('/api/notes/:id', (req, res) => {
     const noteId = req.params.id;
-    readFromFile('./db/db.json')
+    readFromFile('../db/db.json')
       .then((data) => JSON.parse(data))
       .then((json) => {
         const result = json.filter((note) => note.id === noteId);
@@ -25,7 +21,7 @@ note.get('/:id', (req, res) => {
   });
 
 // POST Route for submitting new note
-note.post("/", (req, res) => {
+note.post("/api/notes/", (req, res) => {
     // Destructuring assignment for the items in req.body
     const { title, text } = req.body;
     // If all the required properties are present
@@ -36,7 +32,7 @@ note.post("/", (req, res) => {
         text,
         id: uuid(),
       };
-      readAndAppend(newNote, "./db/db.json");
+      readAndAppend(newNote, "../db/db.json");
       res.json("Note Added!");
     } else {
       res.error("Note did NOT add!!");
@@ -44,16 +40,16 @@ note.post("/", (req, res) => {
   });
 
 // DELETE Route for a specific tip
-note.delete("/:id", (req, res) => {
+note.delete("/api/notes/:id", (req, res) => {
     const noteId = req.params.id;
-    readFromFile('./db/db.json')
+    readFromFile('../db/db.json')
       .then((data) => JSON.parse(data))
       .then((json) => {
         // Make a new array of all notes except the one with the ID provided in the URL
         const result = json.filter((note) => note.id !== noteId);
   
         // Save that array to the filesystem
-        writeToFile('./db/db.json', result);
+        writeToFile('../db/db.json', result);
   
         // Respond to the DELETE request
         res.json(`Item ${noteId} has been deleted 🗑️`);
