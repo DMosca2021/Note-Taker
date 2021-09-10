@@ -2,6 +2,7 @@
 Week 11 Homework
 
 ## Description
+This weeks homework was to add code to already existing code to make a Note Taker app functional. I was able to demonstrate my understanding of creating express apps and creating modularized code for easy understanding and maintanence/updating of said code. 
 
 ## User Story
 ```md
@@ -30,9 +31,20 @@ THEN I am presented with empty fields to enter a new note title and the note’s
 
 ## Access to Repository
 
-[Repo Link]()
+[Deployed Link]()
+[Repo Link](https://github.com/DMosca2021/dm_Note-Taker)
 
 ## Screenshot 
 
+- Before adding note.
+![Screen shot]()
+
+- After adding note.
+![Screen shot]()
+
 ## Credits
 Credit for this project goes to my instructor, teachers assistant, tutor, and fellow students in the DUbootcamp who provided the information and resources I needed to complete this task.
+
+- [Docs on Heroku deployment with Git](https://devcenter.heroku.com/articles/git#:~:text=To%20deploy%20your%20app%20to,heroku%20main%20Initializing%20repository%2C%20done.)
+- [Docs on NPMJS](https://docs.npmjs.com/)
+- [Google](https://www.google.com/)
