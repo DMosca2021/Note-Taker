@@ -31,16 +31,16 @@ THEN I am presented with empty fields to enter a new note title and the note’s
 
 ## Access to Repository
 
-[Deployed Link]()
+[Deployed Link](https://powerful-mesa-63299.herokuapp.com/notes)
 [Repo Link](https://github.com/DMosca2021/dm_Note-Taker)
 
 ## Screenshot 
 
 - Before adding note.
-![Screen shot]()
+![Screen shot](./public/assets/images/note_before.png)
 
 - After adding note.
-![Screen shot]()
+![Screen shot](./public/assets/images/note_after.png)
 
 ## Credits
 Credit for this project goes to my instructor, teachers assistant, tutor, and fellow students in the DUbootcamp who provided the information and resources I needed to complete this task.
