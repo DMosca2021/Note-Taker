@@ -7,5 +7,15 @@
         "title": "Tighten drain plug",
         "text": "Make sure the drain plug is tight!!",
         "id": "2a3c"
+    },
+    {
+        "title": "Put oil back in!",
+        "text": "Make sure you put oil back in this time!!",
+        "id": "94dd"
+    },
+    {
+        "title": "You forgot the oil again!!",
+        "text": "Why does this keep happening??",
+        "id": "8a9e"
     }
 ]
