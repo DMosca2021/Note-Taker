@@ -1,16 +1,11 @@
 [
     {
-        "title":"Test Title",
-        "text":"Test text"
+        "title": "Test Title",
+        "text": "Test text"
     },
     {
         "title": "Tighten drain plug",
         "text": "Make sure the drain plug is tight!!",
         "id": "2a3c"
-    },
-    {
-        "title": "Put oil back in",
-        "text": "Put oil back in the engine this time!!",
-        "id": "2219"
     }
 ]

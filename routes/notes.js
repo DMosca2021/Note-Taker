@@ -3,25 +3,27 @@ const uuid = require("../helpers/uuid");
 const { readFromFile, readAndAppend, writeToFile,} = require('../helpers/fsUtils');
 
 // GET Route for all notes
-note.get("/api/notes", (req, res) => 
-    readFromFile("../db/db.json").then((data) => res.json(JSON.parse(data)))
-);
+note.get("/", (req, res) => 
+    readFromFile("./db/db.json", "utf8").then((data) => {
+      console.log(data)
+      res.json(JSON.parse(data))
+      
+    }));
 
 // GET Route for a specific note
-note.get('/api/notes/:id', (req, res) => {
+note.get('/:id', (req, res) => {
     const noteId = req.params.id;
-    readFromFile('../db/db.json')
+    readFromFile('./db/db.json', "utf8")
       .then((data) => JSON.parse(data))
       .then((json) => {
         const result = json.filter((note) => note.id === noteId);
-        return result.length > 0
-          ? res.json(result)
-          : res.json("No note with that ID");
+        return res.send(result)
+          // : res.json("No note with that ID");
       });
-  });
+});
 
 // POST Route for submitting new note
-note.post("/api/notes/", (req, res) => {
+note.post("/", (req, res) => {
     // Destructuring assignment for the items in req.body
     const { title, text } = req.body;
     // If all the required properties are present
@@ -32,27 +34,29 @@ note.post("/api/notes/", (req, res) => {
         text,
         id: uuid(),
       };
-      readAndAppend(newNote, "../db/db.json");
-      res.json("Note Added!");
+      readAndAppend(newNote, "./db/db.json");
+      // res.json("Note Added!");
+      readFromFile("./db/db.json", "utf8")
+        .then(data => res.send(data))
     } else {
       res.error("Note did NOT add!!");
     }
   });
 
 // DELETE Route for a specific tip
-note.delete("/api/notes/:id", (req, res) => {
+note.delete("/:id", (req, res) => {
     const noteId = req.params.id;
-    readFromFile('../db/db.json')
+    readFromFile('./db/db.json', "utf8")
       .then((data) => JSON.parse(data))
       .then((json) => {
         // Make a new array of all notes except the one with the ID provided in the URL
         const result = json.filter((note) => note.id !== noteId);
   
         // Save that array to the filesystem
-        writeToFile('../db/db.json', result);
+        writeToFile('./db/db.json', result);
   
         // Respond to the DELETE request
-        res.json(`Item ${noteId} has been deleted 🗑️`);
+        res.send(`Item ${noteId} has been deleted 🗑️`);
       });
 });
 
